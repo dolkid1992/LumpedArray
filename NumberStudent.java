@@ -2,31 +2,37 @@ import java.util.Scanner;
 
 public class NumberStudent {
     public static void main(String[] args) {
-        int size;
-        int[] array;
+        int size; // kiem tra kick thuoc mang
+        int[] elements;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.print("Enter a size: ");
+            System.out.print("Enter a size:");
             size = sc.nextInt();
-            if (size > 30)
-                System.out.println("Size should not exceed 30");
-        } while (size > 30);
+            if (size > 20)
+                System.out.println("Size does not exceed 20");
+        } while (size > 20);
 
-        array = new int[size];
+        elements = new int[size]; //nhap gia tri cho cac phan tu cua mang
         int i = 0;
-        while (i < array.length) {
-            System.out.print("Enter a mark for student" + (i + 1) + ": ");
-            array[i] = sc.nextInt();
+        while (i < elements.length) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            elements[i] = sc.nextInt();
             i++;
         }
 
-        int count = 0;
-        System.out.print("List of mark: ");
-        for (int j = 0; j < array.length; j++) {
-            System.out.print(array[j] + "\t");
-            if (array[j] >= 5 && array[j] <= 10)
-                count++;
+        System.out.printf("%-20s%s", "Elements in array: ", "");
+        for (int j = 0 ; j < elements.length; j++) {
+            System.out.print(elements[j] + "\t");
         }
-        System.out.print("\n The number of student passing the exam is "+ count);
+
+        for (int j = 0;j < elements.length / 2; j++){
+            int temp = elements[j];
+            elements[j] = elements[size - 1 -j];
+            elements[size - 1 - j] = temp;
+        }
+        System.out.printf("%-20s%s", "Reverse array: ", "");
+        for (int j = 0; j < elements.length; j++) {
+            System.out.print(elements[j] + "\t");
+        }
     }
 }
