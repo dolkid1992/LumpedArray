@@ -2,21 +2,37 @@ import java.util.Scanner;
 
 public class NumberStudent {
     public static void main(String[] args) {
-        String[] students = {"Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory", "Zoe", "Emily"};
+        int size;
+        int[] array;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a name's student: ");
-        String input_name = sc.nextLine();
+        do {
+            System.out.print("Enter a size: ");
+            size = sc.nextInt();
+            if (size > 20)
+                System.out.println("Size should not exceed 20");
+        } while (size > 20);
 
-        boolean isExist = false;
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].equals(input_name)) {
-                System.out.println("Position of the students in the list " + "is " + (i + 1));
-                isExist = true;
-                break;
+        array = new int[size];
+        int i = 0;
+        while (i < array.length) {
+            System.out.print("Enter element: " + (i + 1) + " : ");
+            array[i] = sc.nextInt();
+            i++;
+        }
+
+        System.out.print("Property list: ");
+        for (int j = 0;j<array.length;j++){
+            System.out.print(array[j] + "\t");
+        }
+
+        int max = array[0];
+        int index = 1;
+        for (int j =0; j < array.length; j++){
+            if (array[j] > max){
+                max = array[j];
+                index = j+1;
             }
         }
-        if (!isExist)
-            System.out.println("Not found" + input_name + "in the list.");
-
+        System.out.println("The largest property value in the list is " + max + " ,at position " + index);
     }
 }
